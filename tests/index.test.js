@@ -9,6 +9,8 @@ test('basic', async () => {
   const server = new SocketSignalWebsocketServer({ port: 5000 })
   server.on('error', console.error)
 
+  const connected = jest.fn()
+
   const peer1 = new SocketSignalWebsocketClient(['ws://localhost:5000'], {
     simplePeer: { wrtc },
     metadata: { user: 'peer1' }
@@ -17,6 +19,9 @@ test('basic', async () => {
     simplePeer: { wrtc },
     metadata: { user: 'peer2' }
   })
+
+  peer1.on('connected', connected)
+  peer2.on('connected', connected)
 
   peer2.onIncomingPeer((peer) => {
     peer.localMetadata = { password: '456' }
@@ -34,6 +39,7 @@ test('basic', async () => {
 
   expect(remotePeer2.metadata).toEqual({ user: 'peer2', password: '456' })
   expect(remotePeer1.metadata).toEqual({ user: 'peer1', password: '123' })
+  expect(connected).toHaveBeenCalledTimes(2)
 
   await peer1.close()
   await peer2.close()
