@@ -1,6 +1,6 @@
 {
   "name": "socket-signal-websocket",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "socket-signal through simple-websocket",
   "main": "index.js",
   "browser": "browser.js",
