@@ -30,7 +30,7 @@ test('basic', async () => {
   await peer1.join(topic)
   await peer2.join(topic)
 
-  peer1.connect(peer2.id, topic, { password: '123' })
+  peer1.connect(peer2.id, topic, { metadata: { password: '123' } })
 
   const [[remotePeer2], [remotePeer1]] = await Promise.all([
     once(peer1, 'peer-connected'),
