@@ -25,8 +25,8 @@
     "isomorphic-ws": "^4.0.1",
     "nanocustomassert": "^1.0.0",
     "reconnecting-websocket": "^4.4.0",
-    "simple-websocket": "^8.1.1",
-    "socket-signal": "^8.0.0",
+    "simple-websocket": "^9.0.0",
+    "socket-signal": "^9.0.0",
     "ws": "^7.2.3"
   },
   "devDependencies": {

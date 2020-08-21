@@ -46,10 +46,10 @@ const client = new SocketSignalWebsocketClient([
 
   const peersForThatTopic = await client.join(topic)
 
-  const remotePeer = client.connect(peersForThatTopic[0], topic)
+  const remotePeer = client.connect(topic, peersForThatTopic[0])
 
   try {
-    await remotePeer.waitForConnection()
+    await remotePeer.ready()
     // SimplePeer connected
   } catch(err) {
     // SimplePeer rejected
