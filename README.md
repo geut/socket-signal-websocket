@@ -31,6 +31,10 @@ const client = new SocketSignalWebsocketClient([
   'ws://localhost:4001',
   'ws://localhost:4002'
 ], {
+  heartbeat: {
+    interval: 10 * 1000,
+    timeout: 5 * 1000
+  },
   simpleWebsocket: {}, // https://github.com/feross/simple-websocket options
   reconnectingWebsocket: {}, // https://github.com/pladaria/reconnecting-websocket options
   simplePeer: {} // https://github.com/feross/simple-peer options

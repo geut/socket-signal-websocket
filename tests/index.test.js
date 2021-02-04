@@ -1,13 +1,15 @@
 const crypto = require('crypto')
 const once = require('events.once')
 const wrtc = require('wrtc')
+const delay = require('delay')
 
 const { SocketSignalWebsocketClient, SocketSignalWebsocketServer } = require('..')
 
 test('basic', async () => {
-  const topic = crypto.randomBytes(32)
   const server = new SocketSignalWebsocketServer({ port: 5000 })
   server.on('error', console.error)
+
+  const topic = crypto.randomBytes(32)
 
   const connected = jest.fn()
 
@@ -43,5 +45,33 @@ test('basic', async () => {
 
   await peer1.close()
   await peer2.close()
-  await server.close()
+  return server.close()
+})
+
+test('heartbeat', async () => {
+  const server = new SocketSignalWebsocketServer({ port: 5001 })
+  server.on('error', console.error)
+
+  const topic = crypto.randomBytes(32)
+
+  const ping = jest.fn()
+  const pingError = jest.fn()
+
+  const peer1 = new SocketSignalWebsocketClient(['ws://localhost:5001'], {
+    simplePeer: { wrtc },
+    metadata: { user: 'peer1' },
+    heartbeat: {
+      interval: 150,
+      timeout: 50
+    }
+  })
+
+  peer1.on('ping', ping)
+  peer1.on('ping-error', pingError)
+
+  await peer1.join(topic)
+  await delay(300)
+  expect(ping).toHaveBeenCalled()
+
+  return server.close()
 })
