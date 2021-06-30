@@ -1,4 +1,2 @@
-module.exports = {
-  SocketSignalWebsocketClient: require('./lib/client'),
-  SocketSignalWebsocketServer: require('./lib/server')
-}
+exports.SocketSignalWebsocketClient = require('./lib/client')
+exports.SocketSignalWebsocketServer = require('./lib/server')
