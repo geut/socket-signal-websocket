@@ -2,23 +2,25 @@
   "name": "socket-signal-websocket",
   "version": "9.2.2",
   "description": "socket-signal through simple-websocket",
-  "main": "index.js",
-  "browser": "browser.js",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./src/client.js",
+    "./server": "./src/server.js"
+  },
+  "browser": "./src/browser.js",
   "files": [
-    "lib",
-    "bin",
-    "index.js",
-    "browser.js"
+    "src",
+    "bin"
   ],
   "bin": {
     "socket-signal-websocket": "bin/index.js"
   },
   "scripts": {
     "start": "node index.js",
-    "test": "jest --passWithNoTests --forceExit --detectOpenHandles",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests --forceExit --detectOpenHandles",
     "posttest": "npm run lint",
     "lint": "standard \"**/*.js\"",
-    "version": "chan release --allow-yanked ${npm_package_version} && git add .",
     "prepublishOnly": "npm test"
   },
   "dependencies": {
@@ -28,21 +30,23 @@
     "nanocustomassert": "^1.0.0",
     "reconnecting-websocket": "^4.4.0",
     "simple-websocket": "^9.0.0",
-    "socket-signal": "^9.2.0",
-    "ws": "^7.2.3"
+    "socket-signal": "^10.0.0",
+    "ws": "^7.5.3"
   },
   "devDependencies": {
-    "@geut/chan": "^2.0.0",
+    "enhanced-resolve": "^5.8.2",
     "events.once": "^2.0.2",
-    "jest": "^24.8.0",
-    "standard": "^16.0.3",
+    "jest": "^27.0.4",
+    "standard": "^16.0.1",
     "wrtc": "^0.4.4"
   },
   "jest": {
+    "resolver": "./tests/jest-resolver.cjs",
+    "testEnvironment": "jest-environment-node",
+    "transform": {},
     "testMatch": [
       "**/tests/**/*.test.js"
-    ],
-    "testEnvironment": "node"
+    ]
   },
   "standard": {
     "env": [
