@@ -4,11 +4,9 @@
   "description": "socket-signal through simple-websocket",
   "type": "module",
   "exports": {
-    ".": "./src/index.js",
-    "./client": "./src/node.js",
-    "./server": "./src/server.js"
+    "node": "./src/index.js",
+    "default": "./src/client-browser.js"
   },
-  "browser": "./src/client-browser.js",
   "files": [
     "src",
     "bin"
