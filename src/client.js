@@ -1,6 +1,6 @@
 import Socket from 'simple-websocket'
 import assert from 'nanocustomassert'
-import WebSocket from 'isomorphic-ws'
+import WebSocket from 'ws'
 import ReconnectingWebSocket from 'reconnecting-websocket'
 import delay from 'delay'
 import { SocketSignalClient } from 'socket-signal'
