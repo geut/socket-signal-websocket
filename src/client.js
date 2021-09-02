@@ -1,6 +1,5 @@
 import Socket from 'simple-websocket'
 import assert from 'nanocustomassert'
-import WebSocket from 'ws'
 import ReconnectingWebSocket from 'reconnecting-websocket'
 import delay from 'delay'
 import { SocketSignalClient } from 'socket-signal'
@@ -30,7 +29,7 @@ export class SocketSignalWebsocketClient extends SocketSignalClient {
     }
 
     if (!reconnectingWebsocket.WebSocket) {
-      reconnectingWebsocket.WebSocket = WebSocket
+      reconnectingWebsocket.WebSocket = SocketSignalWebsocketClient.WebSocket
     }
 
     const ws = new ReconnectingWebSocket(urlProvider, reconnectingWebsocket.protocols, reconnectingWebsocket)

@@ -5,10 +5,10 @@
   "type": "module",
   "exports": {
     ".": "./src/index.js",
-    "./client": "./src/client.js",
+    "./client": "./src/node.js",
     "./server": "./src/server.js"
   },
-  "browser": "./src/browser.js",
+  "browser": "./src/client-browser.js",
   "files": [
     "src",
     "bin"
