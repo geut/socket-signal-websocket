@@ -23,13 +23,12 @@
   },
   "dependencies": {
     "delay": "^5.0.0",
-    "isomorphic-ws": "^4.0.1",
     "minimist": "^1.2.5",
     "nanocustomassert": "^1.0.0",
     "reconnecting-websocket": "^4.4.0",
     "simple-websocket": "^9.0.0",
     "socket-signal": "^9.2.0",
-    "ws": "^7.2.3"
+    "ws": "^8.2.1"
   },
   "devDependencies": {
     "@geut/chan": "^2.0.0",
