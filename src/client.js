@@ -49,20 +49,18 @@ export class SocketSignalWebsocketClient extends SocketSignalClient {
 
     ws.onclose = (ev) => {
       log('socket close', { shouldReconnect: ws._shouldReconnect, ev })
+      socket.connected = false
       socket.emit('disconnect', ws._shouldReconnect)
-      if (ws._shouldReconnect) {
-        socket.connected = false
-      } else {
+      if (!ws._shouldReconnect) {
         _onclose(ev)
       }
     }
 
     ws.onerror = (ev) => {
       log('socket error', { shouldReconnect: ws._shouldReconnect, ev })
+      socket.connected = false
       socket.emit('disconnect', ws._shouldReconnect)
-      if (ws._shouldReconnect) {
-        socket.connected = false
-      } else {
+      if (!ws._shouldReconnect) {
         _onerror(ev)
       }
     }
