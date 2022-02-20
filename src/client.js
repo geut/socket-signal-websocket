@@ -2,7 +2,7 @@ import Socket from 'simple-websocket'
 import assert from 'nanocustomassert'
 import ReconnectingWebSocket from 'reconnecting-websocket'
 import delay from 'delay'
-import { SocketSignalClient } from 'socket-signal'
+import { SocketSignalClient } from 'socket-signal/client'
 import debug from 'debug'
 
 const log = debug('socket-signal:websocket-client')

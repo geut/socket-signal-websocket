@@ -27,7 +27,7 @@
     "nanocustomassert": "^1.0.0",
     "reconnecting-websocket": "^4.4.0",
     "simple-websocket": "^9.0.0",
-    "socket-signal": "^10.0.0",
+    "socket-signal": "^10.3.2",
     "ws": "^8.2.1"
   },
   "devDependencies": {
