@@ -71,9 +71,9 @@ export class SocketSignalWebsocketClient extends SocketSignalClient {
   constructor (urlProvider, opts = {}) {
     const { heartbeat = false, simpleWebsocket, reconnectingWebsocket, onSocket = socket => socket, ...socketSignalOpts } = opts
 
-    const { ws, socket } = SocketSignalWebsocketClient.createSocket(urlProvider, { simpleWebsocket, reconnectingWebsocket })
-
-    super(onSocket(socket), socketSignalOpts)
+    let { ws, socket } = SocketSignalWebsocketClient.createSocket(urlProvider, { simpleWebsocket, reconnectingWebsocket })
+    socket = onSocket(socket)
+    super(socket, socketSignalOpts)
 
     this._ws = ws
     this._heartbeat = heartbeat
