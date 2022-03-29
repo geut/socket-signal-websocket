@@ -1,6 +1,6 @@
 {
   "name": "socket-signal-websocket",
-  "version": "10.0.6",
+  "version": "10.0.7",
   "description": "socket-signal through simple-websocket",
   "type": "module",
   "exports": {
